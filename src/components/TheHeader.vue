@@ -106,31 +106,31 @@
           <img src="@/assets/images/logo-uz.png" width="250" alt="Logo" />
         </a>
         <ul class="flex items-center">
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Tuzilma</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Faoliyat</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Ta‘lim</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Abiturient</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Yangiliklar</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Hujjatlar</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">NamMQI Green</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">QABUL-2024</a>
           </li>
-          <li>
+          <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Bog‘lanish</a>
           </li>
         </ul>
@@ -186,5 +186,28 @@
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   background: linear-gradient(to top, #de592a, #f36b3b);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::before {
+  @apply bg-[#07294d];
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 3px;
+  border-radius: 3px;
+  bottom: -8px;
+  left: 0px;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  transform-origin: right;
+  transform: scaleX(0.6);
 }
 </style>
