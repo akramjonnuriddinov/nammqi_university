@@ -10,7 +10,7 @@ import AppPagination from '@/components/AppPagination.vue'
     <div class="hero"></div>
     <div class="container mx-auto w-full max-w-7xl px-5 py-[80px]">
       <div class="text-center pb-10">
-        <!-- <span class="font-medium uppercase mb-4 text-base text-[#808080]">Instructors</span> -->
+        <span class="font-semibold uppercase mb-4 text-base text-[#808080]">Ustozlar</span>
         <h2 class="mb-1 font-bold text-4xl">O‘qituvchilar ro‘yxati</h2>
       </div>
       <ul class="flex flex-wrap">
