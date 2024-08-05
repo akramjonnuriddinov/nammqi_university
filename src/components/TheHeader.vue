@@ -113,7 +113,7 @@
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Faoliyat</a>
           </li>
           <li>
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Ta'lim</a>
+            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Ta‘lim</a>
           </li>
           <li>
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Abiturient</a>
@@ -131,7 +131,7 @@
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">QABUL-2024</a>
           </li>
           <li>
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Bog'lanish</a>
+            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Bog‘lanish</a>
           </li>
         </ul>
       </div>

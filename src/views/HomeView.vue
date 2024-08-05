@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue'
+import AppPagination from '@/components/AppPagination.vue'
 </script>
 
 <template>
@@ -7,13 +8,13 @@ import TheHeader from '@/components/TheHeader.vue'
 
   <main>
     <div class="hero"></div>
-    <div class="container mx-auto w-full max-w-7xl px-5 py-[100px]">
+    <div class="container mx-auto w-full max-w-7xl px-5 py-[80px]">
       <div class="text-center pb-10">
-        <span class="font-medium uppercase mb-4 text-base text-[#808080]">Instructors</span>
-        <h2 class="mb-1 font-bold text-4xl">Course Instructors</h2>
+        <!-- <span class="font-medium uppercase mb-4 text-base text-[#808080]">Instructors</span> -->
+        <h2 class="mb-1 font-bold text-4xl">O‘qituvchilar ro‘yxati</h2>
       </div>
       <ul class="flex flex-wrap">
-        <li v-for="i in 10" :key="i" class="w-1/3 p-4">
+        <li v-for="i in 7" :key="i" class="w-1/3 p-4">
           <div class="card-wrapper">
             <div class="card-inner">
               <div class="thumbnail-wrapper">
@@ -89,6 +90,7 @@ import TheHeader from '@/components/TheHeader.vue'
           </div>
         </li>
       </ul>
+      <app-pagination />
     </div>
   </main>
 </template>
@@ -115,7 +117,7 @@ import TheHeader from '@/components/TheHeader.vue'
   background-color: white;
   border-radius: 10px;
   /* box-shadow: 0 10px 50px 0 rgba(26, 46, 85, 0.1); */
-  box-shadow: 0 10px 50px 0 rgba(7, 41, 77, 0.1);
+  box-shadow: 0 10px 50px 0 rgba(7, 41, 77, 0.07);
   position: absolute;
   bottom: 0;
   left: 0;
