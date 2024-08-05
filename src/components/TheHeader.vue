@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header>
+  <header class="z-50">
     <div class="bg-[#07294d] text-[#c6c6c6] font-semibold py-4">
       <div class="container mx-auto w-full max-w-7xl px-5 flex items-center justify-between">
         <div class="flex">
@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-white font-semibold py-5">
+    <div class="bg-white font-semibold py-5 w-full">
       <div class="container mx-auto w-full max-w-7xl px-5 flex items-center justify-between">
         <a href="#">
           <img src="@/assets/images/logo-uz.png" width="250" alt="Logo" />
