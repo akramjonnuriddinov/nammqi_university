@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1 class="text-2xl text-center font-bold mt-10">COMING SOON...</h1>
+  <h1 class="text-2xl text-center font-bold my-10">COMING SOON...</h1>
 </template>
 
 <style scoped>
