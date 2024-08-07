@@ -1,5 +1,27 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import TheHeader from '@/components/TheHeader.vue'
+import ProfileTab from '@/components/tabs/ProfileTab.vue'
+import BooksTab from '@/components/tabs/BooksTab.vue'
+import ArticlesTab from '@/components/tabs/ArticlesTab.vue'
+import ProjectsTab from '@/components/tabs/ProjectsTab.vue'
+import VideosTab from '@/components/tabs/VideosTab.vue'
+
+const tabs = ref<string[]>(['Profil', 'Kitoblar', 'Maqolalar', 'Loyihalar', 'Videolar'])
+
+const currentTab = ref<number>(0)
+const tabComponents: any = {
+  Profil: ProfileTab,
+  Kitoblar: BooksTab,
+  Maqolalar: ArticlesTab,
+  Loyihalar: ProjectsTab,
+  Videolar: VideosTab
+}
+
+const currentComponent = computed(() => {
+  const componentName = tabs.value[currentTab.value]
+  return tabComponents[componentName]
+})
 </script>
 
 <template>
@@ -106,36 +128,21 @@ import TheHeader from '@/components/TheHeader.vue'
             <!-- BUTTONS -->
             <div class="w-full flex">
               <button
-                class="border w-full px-2 py-5 font-semibold border-none bg-white text-[#07294d] transition-all duration-500 rounded-tl-md"
+                v-for="(tab, index) in tabs"
+                :key="index"
+                :class="[
+                  'border w-full px-2 py-5 font-semibold border-none transition-all duration-500',
+                  currentTab === index ? 'bg-white text-[#07294d]' : 'bg-[#07294d] text-white'
+                ]"
+                class="tab-btn"
+                @click="currentTab = index"
               >
-                Profil
-              </button>
-              <button
-                class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none hover:bg-white hover:text-[#07294d] transition-all duration-500"
-              >
-                Kitoblar
-              </button>
-              <button
-                class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none hover:bg-white hover:text-[#07294d] transition-all duration-500"
-              >
-                Maqolalar
-              </button>
-              <button
-                class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none hover:bg-white hover:text-[#07294d] transition-all duration-500"
-              >
-                Loyihalar
-              </button>
-              <button
-                class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none rounded-tr-md hover:bg-white hover:text-[#07294d] transition-all duration-500"
-              >
-                Videolar
+                {{ tab }}
               </button>
             </div>
             <!-- /BUTTONS -->
             <div class="p-10">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ut quas excepturi fuga,
-              assumenda pariatur accusamus tempora at autem et. Molestias nisi dolore molestiae
-              numquam corrupti tempora consequatur corporis vitae?
+              <component :is="currentComponent" />
             </div>
           </div>
         </div>
@@ -151,5 +158,13 @@ import TheHeader from '@/components/TheHeader.vue'
   height: 250px;
   display: block;
   background-size: cover;
+}
+
+.tab-btn:first-child {
+  border-top-left-radius: 6px;
+}
+
+.tab-btn:last-child {
+  border-top-right-radius: 6px;
 }
 </style>
