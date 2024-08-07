@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import TheLogo from '@/components/TheLogo.vue'
 
 const links = ref([
   {
@@ -143,9 +144,7 @@ const links = ref([
     </div>
     <div class="bg-white font-semibold py-5 w-full">
       <div class="container mx-auto w-full max-w-7xl px-5 flex items-center justify-between">
-        <a href="#">
-          <img src="@/assets/images/logo-uz.png" width="250" alt="Logo" />
-        </a>
+        <the-logo />
         <ul class="flex items-center">
           <li v-for="(link, index) in links" :key="index" class="nav-link">
             <router-link class="px-2.5 hover:text-[#07294d] transition-all" :to="link.path">
