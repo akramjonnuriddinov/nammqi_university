@@ -107,7 +107,9 @@
         </a>
         <ul class="flex items-center">
           <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Tuzilma</a>
+            <router-link class="px-2.5 hover:text-[#07294d] transition-all" to="/teachers"
+              >O‘qituvchilar</router-link
+            >
           </li>
           <li class="nav-link">
             <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Faoliyat</a>
@@ -162,9 +164,6 @@
 <style scoped>
 .search-input {
   width: 100%;
-  background: url(../images/search.png) no-repeat left center #ffffff;
-  background-size: 17px;
-  background-position-x: 12px;
   color: #464646;
   font-weight: 500;
   text-transform: capitalize;

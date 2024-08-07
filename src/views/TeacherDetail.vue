@@ -17,8 +17,27 @@ import TheHeader from '@/components/TheHeader.vue'
               <span class="text-[#8a8a8a]">Vice Chancellor</span>
             </div>
             <div>
-              <ul class="flex items-center gap-2 mb-4 mr-6">
-                <li class="px-[5px] text-blue-600">
+              <!-- <ul class="flex items-center gap-2 mb-4">
+                <li v-for="i in 4">
+                  <a
+                    class="text-[#333931] bg-[#F3F5F5] flex p-2 rounded-full w-10 h-10 items-center justify-center"
+                    href="#"
+                  >
+                    <svg
+                      class="w-2.5"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul> -->
+              <ul class="flex items-center gap-2 mb-4">
+                <li class="px-[5px] text-[#0866FF]">
                   <a href="#">
                     <svg
                       class="w-4"
@@ -32,7 +51,7 @@ import TheHeader from '@/components/TheHeader.vue'
                     </svg>
                   </a>
                 </li>
-                <li class="px-[5px] text-blue-500">
+                <li class="px-[5px] text-[#1DA1F2]">
                   <a href="#">
                     <svg
                       class="w-7"
@@ -46,7 +65,7 @@ import TheHeader from '@/components/TheHeader.vue'
                     </svg>
                   </a>
                 </li>
-                <li class="px-[5px] text-blue-400">
+                <li class="px-[5px] text-[#168CC8]">
                   <a href="#">
                     <svg
                       class="w-7"
@@ -60,7 +79,7 @@ import TheHeader from '@/components/TheHeader.vue'
                     </svg>
                   </a>
                 </li>
-                <li class="px-[5px] text-blue-900">
+                <li class="px-[5px] text-[#0A66C2]">
                   <a href="#">
                     <svg
                       class="w-6"
@@ -89,7 +108,7 @@ import TheHeader from '@/components/TheHeader.vue'
               <button
                 class="border w-full px-2 py-5 font-semibold border-none bg-white text-[#07294d] transition-all duration-500 rounded-tl-md"
               >
-                Maqolalar
+                Profil
               </button>
               <button
                 class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none hover:bg-white hover:text-[#07294d] transition-all duration-500"
@@ -99,7 +118,7 @@ import TheHeader from '@/components/TheHeader.vue'
               <button
                 class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none hover:bg-white hover:text-[#07294d] transition-all duration-500"
               >
-                Tadbirlar
+                Maqolalar
               </button>
               <button
                 class="border w-full px-2 bg-[#07294d] text-white py-5 font-semibold border-none hover:bg-white hover:text-[#07294d] transition-all duration-500"
