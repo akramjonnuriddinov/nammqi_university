@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import TheHeader from '@/components/TheHeader.vue'
 import AppPagination from '@/components/AppPagination.vue'
 </script>
 
 <template>
-  <the-header />
-
   <main>
     <div class="hero"></div>
     <div class="container mx-auto w-full max-w-7xl px-5 py-[80px]">

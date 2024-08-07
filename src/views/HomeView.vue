@@ -1,10 +1,7 @@
-<script setup lang="ts">
-import TheHeader from '@/components/TheHeader.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <the-header />
-  Home View
+  <h1 class="text-2xl text-center font-bold mt-10">COMING SOON...</h1>
 </template>
 
 <style scoped>

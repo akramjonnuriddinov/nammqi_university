@@ -1,4 +1,45 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const links = ref([
+  {
+    name: 'O‘qituvchilar',
+    path: '/teachers'
+  },
+  {
+    name: 'Faoliyat',
+    path: '/'
+  },
+  {
+    name: 'Ta‘lim',
+    path: '/'
+  },
+  {
+    name: 'Abiturient',
+    path: '/'
+  },
+  {
+    name: 'Yangiliklar',
+    path: '/'
+  },
+  {
+    name: 'Hujjatlar',
+    path: '/'
+  },
+  {
+    name: 'NamMQI Green',
+    path: '/'
+  },
+  {
+    name: 'QABUL-2024',
+    path: '/'
+  },
+  {
+    name: 'Bog‘lanish',
+    path: '/'
+  }
+])
+</script>
 
 <template>
   <header class="z-50">
@@ -106,34 +147,10 @@
           <img src="@/assets/images/logo-uz.png" width="250" alt="Logo" />
         </a>
         <ul class="flex items-center">
-          <li class="nav-link">
-            <router-link class="px-2.5 hover:text-[#07294d] transition-all" to="/teachers"
-              >O‘qituvchilar</router-link
+          <li v-for="(link, index) in links" :key="index" class="nav-link">
+            <router-link class="px-2.5 hover:text-[#07294d] transition-all" :to="link.path">
+              {{ link.name }}</router-link
             >
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Faoliyat</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Ta‘lim</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Abiturient</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Yangiliklar</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Hujjatlar</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">NamMQI Green</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">QABUL-2024</a>
-          </li>
-          <li class="nav-link">
-            <a class="px-2.5 hover:text-[#07294d] transition-all" href="#">Bog‘lanish</a>
           </li>
         </ul>
       </div>

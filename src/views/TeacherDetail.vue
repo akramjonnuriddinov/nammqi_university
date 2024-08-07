@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import TheHeader from '@/components/TheHeader.vue'
 import ProfileTab from '@/components/tabs/ProfileTab.vue'
 import BooksTab from '@/components/tabs/BooksTab.vue'
 import ArticlesTab from '@/components/tabs/ArticlesTab.vue'
@@ -8,7 +7,6 @@ import ProjectsTab from '@/components/tabs/ProjectsTab.vue'
 import VideosTab from '@/components/tabs/VideosTab.vue'
 
 const tabs = ref<string[]>(['Profil', 'Kitoblar', 'Maqolalar', 'Loyihalar', 'Videolar'])
-
 const currentTab = ref<number>(0)
 const tabComponents: any = {
   Profil: ProfileTab,
@@ -25,8 +23,6 @@ const currentComponent = computed(() => {
 </script>
 
 <template>
-  <the-header />
-
   <main>
     <div class="hero"></div>
     <div class="bg-[#edf0f2] pt-[70px] py-[120px]">
