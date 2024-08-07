@@ -38,7 +38,7 @@ const getThumbnailUrl = (videoLink: string) => {
 
 <template>
   <div>
-    <h2 class="text-xl font-bold text-center mb-4">Muallif Videolari</h2>
+    <h2 class="text-xl font-bold text-center mb-8">Muallif Videolari</h2>
     <ul class="flex flex-wrap gap-4 justify-between">
       <li v-for="(videoLink, index) in youtube_videos" :key="index" class="rounded-md">
         <div class="relative w-full h-full rounded-md">

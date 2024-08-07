@@ -6,7 +6,7 @@ import ArticlesTab from '@/components/tabs/ArticlesTab.vue'
 import ProjectsTab from '@/components/tabs/ProjectsTab.vue'
 import VideosTab from '@/components/tabs/VideosTab.vue'
 
-const tabs = ref<string[]>(['Profil', 'Kitoblar', 'Maqolalar', 'Loyihalar', 'Videolar'])
+const tabs = ref<string[]>(['Profil', 'Videolar', 'Kitoblar', 'Maqolalar', 'Loyihalar'])
 const currentTab = ref<number>(0)
 const tabComponents: any = {
   Profil: ProfileTab,
