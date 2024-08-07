@@ -154,6 +154,7 @@ const links = ref([
 <style>
 .footer {
   background-image: url('../assets/images/footer-bg-2.jpg');
+  background-color: #07294d;
   color: white;
   background-repeat: no-repeat;
   background-size: cover;
