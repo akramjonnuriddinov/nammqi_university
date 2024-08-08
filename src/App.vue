@@ -4,9 +4,11 @@ import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import LoginComponent from '@/components/LoginComponent.vue'
 import RegisterComponent from '@/components/RegisterComponent.vue'
+import AppLoader from '@/components/AppLoader.vue'
 
 const isLoginOpen = ref(false)
 const isRegisterOpen = ref(false)
+const isLoading = ref(true)
 
 const openLoginModal = () => {
   isLoginOpen.value = true
@@ -25,6 +27,10 @@ const closeAllModal = () => {
   isLoginOpen.value = false
   document.body.classList.remove('overflow-hidden')
 }
+
+setTimeout(() => {
+  isLoading.value = false
+}, 2000)
 </script>
 
 <template>
@@ -66,6 +72,7 @@ const closeAllModal = () => {
       />
     </transition>
   </div>
+  <app-loader v-if="isLoading" />
 </template>
 
 <style scoped>
