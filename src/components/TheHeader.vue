@@ -135,9 +135,9 @@ const links = ref([
             </li>
           </ul>
           <div class="flex gap-2 text-[#ffc600]">
-            <a href="#">Login</a>
+            <a @click="$emit('open-login')" href="#">Login</a>
             <span> / </span>
-            <a href="#">Register</a>
+            <a @click="$emit('open-register')" href="#">Register</a>
           </div>
         </div>
       </div>
