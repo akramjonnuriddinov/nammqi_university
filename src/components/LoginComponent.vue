@@ -196,7 +196,7 @@
 
             <div class="md:h-full bg-[#07294d] rounded-xl lg:p-12 p-8">
               <img
-                src="https://readymadeui.com/signin-image.webp"
+                src="@/assets/images/signin-image.webp"
                 class="w-full h-full object-contain"
                 alt="login-image"
               />

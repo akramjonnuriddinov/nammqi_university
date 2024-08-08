@@ -17,13 +17,13 @@
             <div class="w-full px-4 py-4">
               <form class="">
                 <div class="mb-12">
-                  <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
+                  <h3 class="text-gray-800 text-3xl font-extrabold">Sign up</h3>
                   <p class="text-sm mt-4 text-gray-800">
-                    Don't have an account
+                    Do have an account
                     <a
                       href="javascript:void(0);"
                       class="text-[#07294d] font-semibold hover:underline ml-1 whitespace-nowrap"
-                      >Register here</a
+                      >Login here</a
                     >
                   </p>
                 </div>
@@ -223,7 +223,7 @@
 
             <div class="md:h-full bg-[#07294d] rounded-xl lg:p-12 p-8">
               <img
-                src="https://readymadeui.com/signin-image.webp"
+                src="@/assets/images/signin-image.webp"
                 class="w-full h-full object-contain"
                 alt="login-image"
               />
