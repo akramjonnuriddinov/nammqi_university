@@ -3,7 +3,7 @@
 <template>
   <section
     @click="$emit('close-login')"
-    class="login p-10 fixed z-50 w-full h-full top-0 left-0 bg-[#00000040] flex items-center justify-center"
+    class="login p-10 fixed z-50 w-full h-full top-0 left-0 bg-[#00000040] flex items-start justify-center"
   >
     <div
       @click.stop
@@ -17,13 +17,14 @@
             <div class="md:max-w-md w-full px-4 py-4">
               <form>
                 <div class="mb-12">
-                  <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
+                  <h3 class="text-gray-800 text-3xl font-extrabold">Kirish</h3>
                   <p class="text-sm mt-4 text-gray-800">
-                    Don't have an account
+                    Akkauntingiz yo'qmi?
                     <a
-                      href="javascript:void(0);"
+                      @click="$emit('open-register')"
+                      href="#"
                       class="text-[#07294d] font-semibold hover:underline ml-1 whitespace-nowrap"
-                      >Register here</a
+                      >Ro'yxatdan o'tish</a
                     >
                   </p>
                 </div>
@@ -37,7 +38,7 @@
                       autocomplete="off"
                       required
                       class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
-                      placeholder="Enter email"
+                      placeholder="Email kiriting"
                     />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -69,14 +70,14 @@
                 </div>
 
                 <div class="mt-8">
-                  <label class="text-gray-800 text-xs block mb-2">Password</label>
+                  <label class="text-gray-800 text-xs block mb-2">Parol</label>
                   <div class="relative flex items-center">
                     <input
                       name="password"
                       type="password"
                       required
                       class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
-                      placeholder="Enter password"
+                      placeholder="Parol kiriting"
                     />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +103,7 @@
                       class="h-4 w-4 shrink-0 text-[#07294d] focus:ring-[#07294d] border-[#07294d] rounded"
                     />
                     <label for="remember-me" class="ml-3 block text-sm text-gray-800">
-                      Remember me
+                      Eslab qolish
                     </label>
                   </div>
                   <div>
@@ -110,7 +111,7 @@
                       href="jajvascript:void(0);"
                       class="text-[#07294d] font-semibold text-sm hover:underline"
                     >
-                      Forgot Password?
+                      Parolni unitdingizmi?
                     </a>
                   </div>
                 </div>
@@ -118,14 +119,17 @@
                 <div class="mt-12">
                   <button
                     type="button"
-                    class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-[#07294d] hover:opacity-90 focus:outline-none"
+                    class="w-full shadow-xl py-4 px-4 text-sm tracking-wide rounded-md text-white bg-[#07294d] hover:opacity-90 focus:outline-none"
                   >
-                    Sign in
+                    Hisobga kirish
                   </button>
                 </div>
 
-                <div class="space-x-6 flex justify-center mt-6">
-                  <button type="button" class="border-none outline-none">
+                <div class="mt-6">
+                  <button
+                    type="button"
+                    class="inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="32px"
@@ -163,32 +167,7 @@
                         data-original="#eb4132"
                       />
                     </svg>
-                  </button>
-                  <button type="button" class="border-none outline-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32px"
-                      fill="#000"
-                      viewBox="0 0 22.773 22.773"
-                    >
-                      <path
-                        d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"
-                        data-original="#000000"
-                      ></path>
-                    </svg>
-                  </button>
-                  <button type="button" class="border-none outline-none">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32px"
-                      fill="#007bff"
-                      viewBox="0 0 167.657 167.657"
-                    >
-                      <path
-                        d="M83.829.349C37.532.349 0 37.881 0 84.178c0 41.523 30.222 75.911 69.848 82.57v-65.081H49.626v-23.42h20.222V60.978c0-20.037 12.238-30.956 30.115-30.956 8.562 0 15.92.638 18.056.919v20.944l-12.399.006c-9.72 0-11.594 4.618-11.594 11.397v14.947h23.193l-3.025 23.42H94.026v65.653c41.476-5.048 73.631-40.312 73.631-83.154 0-46.273-37.532-83.805-83.828-83.805z"
-                        data-original="#010002"
-                      ></path>
-                    </svg>
+                    Google orqali kirish
                   </button>
                 </div>
               </form>
@@ -208,4 +187,13 @@
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.login {
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.73);
+  -webkit-box-pack: center;
+  overflow: auto;
+  width: 100vw;
+  height: -webkit-fill-available;
+}
+</style>

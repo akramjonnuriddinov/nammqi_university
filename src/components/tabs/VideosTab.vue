@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 
 const youtube_videos = ref([
-  'https://youtu.be/F_MjWrWECK8',
-  'https://www.youtube.com/watch?v=lZ13RAoQgDQ',
-  'https://www.youtube.com/watch?v=JJb9mFP1PQc&t=650s',
-  'https://www.youtube.com/watch?v=RhXm3mX_i4U',
-  'https://www.youtube.com/watch?v=zeZlBHViN1o'
+  'https://youtu.be/W6NZfCO5SIk',
+  'https://youtu.be/EerdGm-ehJQ',
+  'https://youtu.be/Zi-Q0t4gMC8',
+  'https://youtu.be/PkZNo7MFNFg',
+  'https://youtu.be/1rRD9uMF92o'
 ])
 const showModal = ref(false)
 const currentVideoUrl = ref('')
