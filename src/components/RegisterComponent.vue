@@ -1,4 +1,33 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+import { auth } from '@/firebase'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+
+const user = ref<any>(null)
+
+const signInWithGoogle = async () => {
+  try {
+    const provider = new GoogleAuthProvider()
+    const result = await signInWithPopup(getAuth(), provider)
+    user.value = result.user
+  } catch (error) {
+    console.error('Error signing in with Google:', error)
+  }
+}
+
+// const signOut = async () => {
+//   try {
+//     await auth.signOut()
+//     user.value = null
+//   } catch (error) {
+//     console.error('Error signing out:', error)
+//   }
+// }
+
+auth.onAuthStateChanged((currentUser) => {
+  user.value = currentUser
+})
+</script>
 
 <template>
   <section
@@ -146,6 +175,7 @@
 
                 <div class="mt-6">
                   <button
+                    @click="signInWithGoogle"
                     type="button"
                     class="inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50"
                   >
