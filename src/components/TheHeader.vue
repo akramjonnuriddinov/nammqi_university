@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import TheLogo from '@/components/TheLogo.vue'
+import { useAuthStore } from '@/stores/auth'
 
 const links = ref([
   {
@@ -40,6 +41,14 @@ const links = ref([
     path: '/'
   }
 ])
+const authStore = useAuthStore()
+const user = ref<any>(null)
+
+onMounted(async () => {
+  await authStore.fetchProfile()
+  user.value = await authStore.user
+  console.log(user.value, 'user')
+})
 </script>
 
 <template>
@@ -134,10 +143,13 @@ const links = ref([
               </a>
             </li>
           </ul>
-          <div class="flex gap-2 text-[#ffc600]">
+          <div v-if="user" class="flex gap-2 text-[#ffc600]">
             <a @click="$emit('open-login')" href="#">Login</a>
             <span> / </span>
             <a @click="$emit('open-register')" href="#">Register</a>
+          </div>
+          <div v-else class="flex gap-2 text-[#ffc600]">
+            <router-link to="profile">Profile</router-link>
           </div>
         </div>
       </div>

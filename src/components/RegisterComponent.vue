@@ -1,32 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { auth } from '@/firebase'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-
-const user = ref<any>(null)
+import { signWithGoogle } from '@/composables/useAuth'
 
 const signInWithGoogle = async () => {
-  try {
-    const provider = new GoogleAuthProvider()
-    const result = await signInWithPopup(getAuth(), provider)
-    user.value = result.user
-  } catch (error) {
-    console.error('Error signing in with Google:', error)
-  }
+  await signWithGoogle()
 }
-
-// const signOut = async () => {
-//   try {
-//     await auth.signOut()
-//     user.value = null
-//   } catch (error) {
-//     console.error('Error signing out:', error)
-//   }
-// }
-
-auth.onAuthStateChanged((currentUser) => {
-  user.value = currentUser
-})
 </script>
 
 <template>
