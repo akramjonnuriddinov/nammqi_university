@@ -73,8 +73,8 @@ const currentComponent = computed(() => {
                 v-for="(tab, index) in tabs"
                 :key="index"
                 :class="[
-                  'border w-full px-2 py-5 font-semibold border-none transition-all duration-500 hover:bg-white hover:text-[#07294d]',
-                  currentTab === index ? 'bg-white text-[#07294d]' : 'bg-[#07294d] text-white'
+                  'border w-full px-2 py-5 font-semibold border-none transition-all duration-500 hover:bg-white hover:text-primary',
+                  currentTab === index ? 'bg-white text-primary' : 'bg-primary text-white'
                 ]"
                 class="tab-btn"
                 @click="currentTab = index"

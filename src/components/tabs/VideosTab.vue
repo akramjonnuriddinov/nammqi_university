@@ -43,7 +43,7 @@ const getThumbnailUrl = (videoLink: string) => {
       <li v-for="(videoLink, index) in youtube_videos" :key="index" class="rounded-md">
         <div class="relative w-full h-full rounded-md">
           <button
-            class="absolute w-14 h-14 rounded-full flex items-center justify-center top-1/2 left-1/2 bg-white text-[#07294D] -translate-y-1/2 -translate-x-1/2"
+            class="absolute w-14 h-14 rounded-full flex items-center justify-center top-1/2 left-1/2 bg-white text-primary -translate-y-1/2 -translate-x-1/2"
             @click="openModal(videoLink)"
           >
             <svg

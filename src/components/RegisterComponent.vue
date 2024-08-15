@@ -30,7 +30,7 @@ const signInWithGoogle = async () => {
                     <a
                       @click="$emit('open-login')"
                       href="#"
-                      class="text-[#07294d] font-semibold hover:underline ml-1 whitespace-nowrap"
+                      class="text-primary font-semibold hover:underline ml-1 whitespace-nowrap"
                       >Kirish</a
                     >
                   </p>
@@ -44,7 +44,7 @@ const signInWithGoogle = async () => {
                       type="text"
                       autocomplete="off"
                       required
-                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
+                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-primary px-2 py-3 outline-none"
                       placeholder="Ism-familiya"
                     />
                     <inline-svg
@@ -64,7 +64,7 @@ const signInWithGoogle = async () => {
                       type="text"
                       autocomplete="off"
                       required
-                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
+                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-primary px-2 py-3 outline-none"
                       placeholder="Email kiriting"
                     />
                     <inline-svg
@@ -83,7 +83,7 @@ const signInWithGoogle = async () => {
                       name="password"
                       type="password"
                       required
-                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
+                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-primary px-2 py-3 outline-none"
                       placeholder="Parol kiriting"
                     />
                     <inline-svg
@@ -101,7 +101,7 @@ const signInWithGoogle = async () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      class="h-4 w-4 shrink-0 text-[#07294d] focus:ring-[#07294d] border-[#07294d] rounded"
+                      class="h-4 w-4 shrink-0 text-primary focus:ring-primary border-primary rounded"
                     />
                     <label for="remember-me" class="ml-3 block text-sm text-gray-800">
                       Eslab qolish
@@ -112,7 +112,7 @@ const signInWithGoogle = async () => {
                 <div class="mt-12">
                   <button
                     type="button"
-                    class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-[#07294d] hover:opacity-90 focus:outline-none"
+                    class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-primary hover:opacity-90 focus:outline-none"
                   >
                     Ro'yxatdan o'tish
                   </button>
@@ -131,7 +131,7 @@ const signInWithGoogle = async () => {
               </form>
             </div>
 
-            <div class="md:h-full bg-[#07294d] rounded-xl lg:p-12 p-8">
+            <div class="md:h-full bg-primary rounded-xl lg:p-12 p-8">
               <img
                 src="@/assets/images/signin-image.webp"
                 class="w-full h-full object-contain"

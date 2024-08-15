@@ -25,7 +25,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                     <a
                       @click="$emit('open-register')"
                       href="#"
-                      class="text-[#07294d] font-semibold hover:underline ml-1 whitespace-nowrap"
+                      class="text-primary font-semibold hover:underline ml-1 whitespace-nowrap"
                       >Ro'yxatdan o'tish</a
                     >
                   </p>
@@ -39,7 +39,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                       type="text"
                       autocomplete="off"
                       required
-                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
+                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-primary px-2 py-3 outline-none"
                       placeholder="Email kiriting"
                     />
                     <inline-svg
@@ -58,7 +58,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                       name="password"
                       type="password"
                       required
-                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-[#07294d] px-2 py-3 outline-none"
+                      class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-primary px-2 py-3 outline-none"
                       placeholder="Parol kiriting"
                     />
                     <inline-svg
@@ -76,7 +76,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      class="h-4 w-4 shrink-0 text-[#07294d] focus:ring-[#07294d] border-[#07294d] rounded"
+                      class="h-4 w-4 shrink-0 text-primary focus:ring-primary border-primary rounded"
                     />
                     <label for="remember-me" class="ml-3 block text-sm text-gray-800">
                       Eslab qolish
@@ -85,7 +85,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                   <div>
                     <a
                       href="jajvascript:void(0);"
-                      class="text-[#07294d] font-semibold text-sm hover:underline"
+                      class="text-primary font-semibold text-sm hover:underline"
                     >
                       Parolni unitdingizmi?
                     </a>
@@ -95,7 +95,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                 <div class="mt-12">
                   <button
                     type="button"
-                    class="w-full shadow-xl py-4 px-4 text-sm tracking-wide rounded-md text-white bg-[#07294d] hover:opacity-90 focus:outline-none"
+                    class="w-full shadow-xl py-4 px-4 text-sm tracking-wide rounded-md text-white bg-primary hover:opacity-90 focus:outline-none"
                   >
                     Hisobga kirish
                   </button>
@@ -113,7 +113,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
               </form>
             </div>
 
-            <div class="md:h-full bg-[#07294d] rounded-xl lg:p-12 p-8">
+            <div class="md:h-full bg-primary rounded-xl lg:p-12 p-8">
               <img
                 src="@/assets/images/signin-image.webp"
                 class="w-full h-full object-contain"

@@ -57,7 +57,7 @@ onMounted(async () => {
 
 <template>
   <header class="z-50">
-    <div class="bg-[#07294d] text-[#c6c6c6] font-semibold py-4">
+    <div class="bg-primary text-[#c6c6c6] font-semibold py-4">
       <div class="container mx-auto w-full max-w-7xl px-5 flex items-center justify-between">
         <div class="flex">
           <div class="mr-5 flex items-center gap-2">
@@ -109,14 +109,14 @@ onMounted(async () => {
         <the-logo />
         <ul class="flex items-center">
           <li v-for="(link, index) in links" :key="index" class="nav-link">
-            <router-link class="px-2.5 hover:text-[#07294d] transition-all" :to="link.path">
+            <router-link class="px-2.5 hover:text-primary transition-all" :to="link.path">
               {{ link.name }}</router-link
             >
           </li>
         </ul>
       </div>
     </div>
-    <div class="bg-[#07294d] text-[#c6c6c6] font-semibold py-4 flex">
+    <div class="bg-primary text-[#c6c6c6] font-semibold py-4 flex">
       <div class="container mx-auto w-full max-w-7xl px-5 flex items-center justify-between">
         <div class="flex justify-center w-full">
           <div class="w-[40%] relative">
@@ -161,7 +161,7 @@ onMounted(async () => {
 }
 
 .nav-link::before {
-  @apply bg-[#07294d];
+  @apply bg-primary;
   content: '';
   position: absolute;
   width: 85%;

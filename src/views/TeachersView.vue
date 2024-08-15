@@ -24,7 +24,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                 <ul class="thumbnail-social flex gap-4">
                   <li class="flex items-center justify-center">
                     <a
-                      class="flex border-2 text-white hover:bg-white hover:text-[#07294d] transition-all duration-300 w-full h-full p-3 rounded-full"
+                      class="flex border-2 text-white hover:bg-white hover:text-primary transition-all duration-300 w-full h-full p-3 rounded-full"
                       href="#"
                     >
                       <inline-svg class="w-5 h-5" src="svg/linkedin.svg" />
@@ -32,7 +32,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                   </li>
                   <li class="flex items-center justify-center">
                     <a
-                      class="flex border-2 text-white hover:bg-white hover:text-[#07294d] transition-all duration-300 w-full h-full p-3 rounded-full"
+                      class="flex border-2 text-white hover:bg-white hover:text-primary transition-all duration-300 w-full h-full p-3 rounded-full"
                       href="#"
                     >
                       <inline-svg class="w-5 h-5" src="svg/twitter.svg" />
@@ -40,7 +40,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
                   </li>
                   <li class="flex items-center justify-center">
                     <a
-                      class="flex border-2 text-white hover:bg-white hover:text-[#07294d] transition-all duration-300 w-full h-full p-3 rounded-full"
+                      class="flex border-2 text-white hover:bg-white hover:text-primary transition-all duration-300 w-full h-full p-3 rounded-full"
                       href="#"
                     >
                       <inline-svg class="w-5 h-5" src="svg/facebook.svg" />

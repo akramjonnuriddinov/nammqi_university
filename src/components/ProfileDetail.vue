@@ -1,3 +1,76 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+// import BaseButton from '@/components/BaseButton.vue'
+import ButtonLoader from '@/components/ButtonLoader.vue'
+import { getAuth, updateProfile } from 'firebase/auth'
+import { storageRef, storage } from '@/firebase'
+import { db } from '@/firebase'
+import { uploadBytes, deleteObject, ref as fireRef } from 'firebase/storage'
+import { setDoc, doc } from 'firebase/firestore'
+import { useAuthStore } from '@/stores/auth'
+
+const store = useAuthStore()
+const user = ref({
+  ...store.user
+})
+const currentUser = getAuth().currentUser
+const updatedUser = ref({
+  ...user.value
+})
+const selectedFile = ref<any>(null)
+const isLoadingResume = ref(false)
+const isLoading = ref(false)
+
+const handleFileChange = async (event: any) => {
+  selectedFile.value = event.target.files[0]
+  if (selectedFile.value) {
+    isLoadingResume.value = true
+    const userDirectory = `users/${store.user.id}`
+    const fileRef = storageRef(storage, userDirectory)
+    try {
+      await uploadBytes(fileRef, selectedFile.value)
+      store.fetchProfile()
+    } catch (error) {
+      console.error('Error uploading file: ', error)
+    } finally {
+      isLoadingResume.value = false
+    }
+  }
+}
+
+const deleteResume = async () => {
+  const desertRef = fireRef(storage, `users/${store.user.id}`)
+  await deleteObject(desertRef)
+  store.removeResume()
+  selectedFile.value = null
+}
+
+const showResume = () => {
+  window.open(store.resume, '_blank')
+}
+
+const updateValue = (event: any, slug: string) => {
+  const newValue = event.target.value
+  updatedUser.value[slug] = newValue
+}
+
+const updateProfileInformation = async () => {
+  if (currentUser !== null) {
+    try {
+      isLoading.value = true
+      await updateProfile(currentUser, { displayName: updatedUser.value.name })
+      const colRef = doc(db, 'users', updatedUser.value.id)
+      setDoc(colRef, updatedUser.value)
+      store.fetchProfile()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      isLoading.value = false
+    }
+  }
+}
+</script>
+
 <template>
   <div class="relative border-b border-gray-300">
     <div class="mb-7">
@@ -17,7 +90,7 @@
             v-model="user.name"
             autocomplete="off"
             placeholder="name"
-            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-[#07294d] focus:shadow-md"
+            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
           />
         </div>
         <div class="flex w-[400px] flex-col max-xl:w-full">
@@ -29,7 +102,7 @@
             v-model="user.email"
             autocomplete="off"
             placeholder="email@company.com"
-            class="w-full cursor-not-allowed rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base text-tg-paragraph-color outline-none focus:border-[#07294d] focus:shadow-md"
+            class="w-full cursor-not-allowed rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base text-tg-paragraph-color outline-none focus:border-primary focus:shadow-md"
           />
         </div>
       </div>
@@ -43,7 +116,7 @@
             v-model="user.github"
             autocomplete="off"
             placeholder="link"
-            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-[#07294d] focus:shadow-md"
+            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
           />
         </div>
         <div class="flex w-[400px] flex-col max-xl:w-full">
@@ -55,7 +128,7 @@
             v-model="user.linkedin"
             autocomplete="off"
             placeholder="link"
-            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-[#07294d] focus:shadow-md"
+            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
           />
         </div>
       </div>
@@ -69,7 +142,7 @@
             v-model="user.telegram"
             autocomplete="off"
             placeholder="username"
-            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-[#07294d] focus:shadow-md"
+            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
           />
         </div>
         <div class="flex w-[400px] flex-col max-xl:w-full">
@@ -81,18 +154,18 @@
             v-model="user.phone"
             autocomplete="off"
             placeholder="number"
-            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-[#07294d] focus:shadow-md"
+            class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
           />
         </div>
       </div>
       <div class="flex justify-end">
-        <!-- <base-button
+        <button
           @click="updateProfileInformation"
-          :is-loading="isLoadingProfile"
-          class="w-[180px]"
+          class="w-[180px] update-btn bg-primary flex justify-center items-center h-16 gap-2"
         >
-          Update
-        </base-button> -->
+          <button-loader v-if="isLoading" />
+          <span v-else>Yangilash</span>
+        </button>
       </div>
     </div>
   </div>
@@ -134,79 +207,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-// import BaseButton from '@/components/BaseButton.vue'
-// import ButtonLoader from '@/components/ButtonLoader.vue'
-import { getAuth, updateProfile } from 'firebase/auth'
-import { storageRef, storage } from '@/firebase'
-import { db } from '@/firebase'
-// import { ESize } from '@/types'
-import { uploadBytes, deleteObject, ref as fireRef } from 'firebase/storage'
-// import Skeleton, { ESkeletonTheme } from '@/components/Skeleton.vue'
-import { setDoc, doc } from 'firebase/firestore'
-import { useAuthStore } from '@/stores/auth'
-// import InlineSvg from '@/components/InlineSvg.vue'
-
-const isLoading = ref(false)
-const store = useAuthStore()
-const user = ref({
-  ...store.user
-})
-const currentUser = getAuth().currentUser
-const updatedUser = ref({
-  ...user.value
-})
-const selectedFile = ref<any>(null)
-const isLoadingResume = ref(false)
-const isLoadingProfile = ref(false)
-
-const handleFileChange = async (event: any) => {
-  selectedFile.value = event.target.files[0]
-  if (selectedFile.value) {
-    isLoadingResume.value = true
-    const userDirectory = `users/${store.user.id}`
-    const fileRef = storageRef(storage, userDirectory)
-    try {
-      await uploadBytes(fileRef, selectedFile.value)
-      store.fetchProfile()
-    } catch (error) {
-      console.error('Error uploading file: ', error)
-    } finally {
-      isLoadingResume.value = false
-    }
-  }
+<style scoped>
+.update-btn {
+  border: 0px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 13px;
+  border-radius: 6px;
 }
-
-const deleteResume = async () => {
-  const desertRef = fireRef(storage, `users/${store.user.id}`)
-  await deleteObject(desertRef)
-  store.removeResume()
-  selectedFile.value = null
-}
-
-const showResume = () => {
-  window.open(store.resume, '_blank')
-}
-
-const updateValue = (event: any, slug: string) => {
-  const newValue = event.target.value
-  updatedUser.value[slug] = newValue
-}
-
-const updateProfileInformation = async () => {
-  if (currentUser !== null) {
-    try {
-      isLoadingProfile.value = true
-      await updateProfile(currentUser, { displayName: updatedUser.value.name })
-      const colRef = doc(db, 'users', updatedUser.value.id)
-      setDoc(colRef, updatedUser.value)
-      store.fetchProfile()
-    } catch (error) {
-      console.error(error)
-    } finally {
-      isLoadingProfile.value = false
-    }
-  }
-}
-</script>
+</style>
