@@ -1,14 +1,8 @@
-<script setup lang="ts"></script>
-
 <template>
   <div id="back__preloader" style="">
     <div id="back__circle_loader"></div>
     <div class="back__loader_logo">
-      <img
-        loading="lazy"
-        src="https://html.themewin.com/edurock-preview/edurock/img/pre.png"
-        alt="Preload"
-      />
+      <img loading="lazy" src="@/assets/images/loader-img.png" alt="Preload" />
     </div>
   </div>
 </template>

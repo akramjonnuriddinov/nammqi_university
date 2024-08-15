@@ -7,7 +7,7 @@
       <div
         class="min-h-screen w-64 flex-grow pb-6 ps-[110px] pt-10 max-[990px]:mt-0 max-[990px]:w-full max-[990px]:pl-0 max-[990px]:ps-4 max-[990px]:pt-10"
       >
-        <component v-if="store.user" :is="selectedComponent"></component>
+        <component v-if="authStore.user" :is="selectedComponent" />
       </div>
     </div>
   </section>
@@ -19,7 +19,11 @@ import ProfileSidebar from '@/components/ProfileSidebar.vue'
 import ProfileDetail from '@/components/ProfileDetail.vue'
 import { useAuthStore } from '@/stores/auth'
 
-const store = useAuthStore()
+const authStore = useAuthStore()
+if (authStore.user) {
+  console.log('hey')
+}
+
 const selectedComponent = shallowRef(ProfileDetail)
 const updateSelectedComponent = (component: any) => {
   switch (component) {

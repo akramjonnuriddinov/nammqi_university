@@ -39,22 +39,26 @@ const emit = defineEmits(['selectItem'])
 const selectedNavItem = ref('Profile details')
 const navigations = ref([
   {
-    name: 'Profile details',
+    name: "Profil ma'lumotlari",
     component: 'ProfileDetail',
     disabled: false
   },
   {
-    name: 'Applied vacancies',
+    name: 'Video yuklash',
     component: 'AppliedVacancies',
     disabled: false
   },
   {
-    name: 'Applied internships',
-    disabled: true
+    name: 'Kitob yuklash',
+    disabled: false
   },
   {
-    name: 'Messages from Teamly',
-    disabled: true
+    name: 'Maqola yuklash',
+    disabled: false
+  },
+  {
+    name: 'Loyihalar',
+    disabled: false
   }
 ])
 
