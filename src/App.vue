@@ -5,9 +5,7 @@ import TheFooter from '@/components/TheFooter.vue'
 import LoginComponent from '@/components/LoginComponent.vue'
 import RegisterComponent from '@/components/RegisterComponent.vue'
 import AppLoader from '@/components/AppLoader.vue'
-import { useAuthStore } from '@/stores/auth'
 
-const store = useAuthStore()
 const isLoginOpen = ref(false)
 const isRegisterOpen = ref(false)
 const isLoading = ref(true)
