@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const emit = defineEmits(['selectItem'])
-const selectedNavItem = ref('Profile details')
+const selectedNavItem = ref("Profil ma'lumotlari")
 const navigations = ref([
   {
     name: "Profil ma'lumotlari",
@@ -11,11 +11,12 @@ const navigations = ref([
   },
   {
     name: 'Video yuklash',
-    component: 'AppliedVacancies',
+    component: 'UploadVideo',
     disabled: false
   },
   {
     name: 'Kitob yuklash',
+    component: 'UploadBook',
     disabled: false
   },
   {

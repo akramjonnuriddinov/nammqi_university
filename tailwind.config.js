@@ -5,7 +5,8 @@ export default {
     extend: {
       colors: {
         primary: '#07294d',
-        orange: '#EF6838'
+        orange: '#EF6838',
+        'tg-gray': '#808080'
       },
       fontFamily: {
         font1: ['DM Sans', 'Bricolage Grotesque', 'sans-serif'],

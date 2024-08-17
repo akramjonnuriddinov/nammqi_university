@@ -1,38 +1,73 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { fetchTeacherVideos } from '@/composables/useFetch'
 
-const youtube_videos = ref([
-  'https://youtu.be/W6NZfCO5SIk',
-  'https://youtu.be/EerdGm-ehJQ',
-  'https://youtu.be/Zi-Q0t4gMC8',
-  'https://youtu.be/PkZNo7MFNFg',
-  'https://youtu.be/1rRD9uMF92o'
-])
+interface Video {
+  video: string
+}
+
+const youtube_videos = ref<Video[]>([])
 const showModal = ref(false)
 const currentVideoUrl = ref('')
 
+// Fetch videos on component mount
+onMounted(async () => {
+  try {
+    const videos = await fetchTeacherVideos()
+    if (Array.isArray(videos)) {
+      youtube_videos.value = videos.map((doc: any) => ({
+        video: typeof doc.video === 'string' ? doc.video : '' // Ensure videoLink is a string
+      }))
+    } else {
+      console.error('Expected an array from fetchTeacherVideos')
+    }
+  } catch (error) {
+    console.error('Error fetching videos:', error)
+  }
+})
+
+// Open modal with embedded YouTube video
 const openModal = (videoLink: string) => {
-  showModal.value = true
-  currentVideoUrl.value = getEmbedUrl(videoLink)
+  if (typeof videoLink === 'string') {
+    const embedUrl = getEmbedUrl(videoLink)
+    if (embedUrl) {
+      currentVideoUrl.value = embedUrl
+      showModal.value = true
+    } else {
+      console.error('Invalid YouTube video link:', videoLink)
+    }
+  } else {
+    console.error('Video link is not a string:', videoLink)
+  }
 }
 
+// Close modal
 const closeModal = () => {
   showModal.value = false
+  currentVideoUrl.value = ''
 }
 
+// Extract the YouTube embed URL from a given YouTube video link
 const getEmbedUrl = (videoLink: string) => {
-  const videoIdMatch = videoLink.match(
-    /(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-  )
-  return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : ''
+  if (typeof videoLink === 'string') {
+    const videoIdMatch = videoLink.match(
+      /(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    )
+    return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : ''
+  }
+  return ''
 }
 
+// Extract YouTube video thumbnail URL
 const getThumbnailUrl = (videoLink: string) => {
-  const videoIdMatch = videoLink.match(
-    /(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-  )
-  const videoId = videoIdMatch ? videoIdMatch[1] : ''
-  return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : ''
+  if (typeof videoLink === 'string') {
+    const videoIdMatch = videoLink.match(
+      /(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    )
+    const videoId = videoIdMatch ? videoIdMatch[1] : ''
+    return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : ''
+  }
+  return ''
 }
 </script>
 
@@ -44,7 +79,7 @@ const getThumbnailUrl = (videoLink: string) => {
         <div class="relative w-full h-full rounded-md">
           <button
             class="absolute w-14 h-14 rounded-full flex items-center justify-center top-1/2 left-1/2 bg-white text-primary -translate-y-1/2 -translate-x-1/2"
-            @click="openModal(videoLink)"
+            @click="openModal(videoLink.video)"
           >
             <svg
               class="w-6 h-6"
@@ -57,7 +92,7 @@ const getThumbnailUrl = (videoLink: string) => {
               />
             </svg>
           </button>
-          <img class="rounded-md" :src="getThumbnailUrl(videoLink)" width="350" alt="" />
+          <img class="rounded-md" :src="getThumbnailUrl(videoLink.video)" width="350" alt="" />
         </div>
       </li>
     </ul>

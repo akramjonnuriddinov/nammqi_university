@@ -2,6 +2,7 @@
 import { shallowRef } from 'vue'
 import ProfileSidebar from '@/components/ProfileSidebar.vue'
 import ProfileDetail from '@/components/ProfileDetail.vue'
+import UploadVideo from '@/components/UploadVideo.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const authStore = useAuthStore()
@@ -15,6 +16,8 @@ const updateSelectedComponent = (component: any) => {
     case 'ProfileDetail':
       selectedComponent.value = ProfileDetail
       break
+    case 'UploadVideo':
+      selectedComponent.value = UploadVideo
   }
 }
 </script>

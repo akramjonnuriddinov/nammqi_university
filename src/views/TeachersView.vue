@@ -8,7 +8,7 @@ import InlineSvg from '@/components/InlineSvg.vue'
     <div class="hero"></div>
     <div class="container mx-auto w-full max-w-7xl px-5 py-[80px]">
       <div class="text-center pb-10">
-        <span class="font-semibold uppercase mb-4 text-base text-[#808080]">Ustozlar</span>
+        <span class="font-semibold uppercase mb-4 text-base text-tg-gray">Ustozlar</span>
         <h2 class="mb-1 font-bold text-4xl">O‘qituvchilar ro‘yxati</h2>
       </div>
       <ul class="flex flex-wrap">
@@ -52,8 +52,8 @@ import InlineSvg from '@/components/InlineSvg.vue'
                 <h5 class="title mb-1 font-semibold text-lg">
                   <router-link to="/teacher_detail">Jane Seymour</router-link>
                 </h5>
-                <span class="designation mb-4 text-[#808080]">Teacher</span>
-                <p class="mb-4 text-[#808080] text-base">
+                <span class="designation mb-4 text-tg-gray">Teacher</span>
+                <p class="mb-4 text-tg-gray text-base">
                   Consectetur adipisicing elit, sed do eius mod tempor incididunt
                 </p>
               </div>
