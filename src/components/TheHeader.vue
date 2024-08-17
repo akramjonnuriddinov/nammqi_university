@@ -44,14 +44,10 @@ const links = ref([
 ])
 const authStore = useAuthStore()
 const user = ref<any>(null)
-if (authStore.user) {
-  console.log('hey bro')
-}
 
 onMounted(async () => {
   await authStore.fetchProfile()
   user.value = await authStore.user
-  console.log(user.value, 'user')
 })
 </script>
 

@@ -17,7 +17,6 @@ export const fetchTeacherVideos = async () => {
       videos.push(doc.data())
     })
 
-    console.log('Teacher Videos:', videos)
     return videos
   } catch (error) {
     console.error('Error fetching teacher videos:', error)

@@ -14,13 +14,11 @@ const teacherVideos = ref([])
 const uploadVideo = async () => {
   try {
     isLoading.value = true
-    const res = await addDoc(collectionRef, {
+    await addDoc(collectionRef, {
       userId: authStore.user.id,
       video: videoLink.value,
       date: Date.now()
     })
-
-    console.log('Document successfully written with ID:', res.id)
   } catch (error) {
     isLoading.value = false
     console.error('Error adding document: ', error)
