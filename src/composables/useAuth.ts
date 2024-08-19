@@ -35,7 +35,8 @@ export const signWithGoogle = async () => {
         id: user.uid,
         email: user.email,
         name: user.displayName,
-        verified: true
+        verified: true,
+        photoURL: user.photoURL
       })
     }
 

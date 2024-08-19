@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import ProfileTab from '@/components/tabs/ProfileTab.vue'
 import BooksTab from '@/components/tabs/BooksTab.vue'
 import ArticlesTab from '@/components/tabs/ArticlesTab.vue'
 import ProjectsTab from '@/components/tabs/ProjectsTab.vue'
 import VideosTab from '@/components/tabs/VideosTab.vue'
 import InlineSvg from '@/components/InlineSvg.vue'
+import { useRoute } from 'vue-router'
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 
+const route = useRoute()
 const tabs = ref<string[]>(['Profil', 'Videolar', 'Kitoblar', 'Maqolalar', 'Loyihalar'])
 const currentTab = ref<number>(0)
 const tabComponents: any = {
@@ -16,6 +19,22 @@ const tabComponents: any = {
   Loyihalar: ProjectsTab,
   Videolar: VideosTab
 }
+
+const teacher = ref<any>(null)
+const fetchTeacher = async () => {
+  const teacherId = route.params.id // Get the teacher ID from route params
+  const db = getFirestore()
+  const teacherRef = doc(db, 'users', teacherId as string)
+  const docSnap = await getDoc(teacherRef)
+  if (docSnap.exists()) {
+    teacher.value = docSnap.data()
+  }
+}
+
+onMounted(async () => {
+  await fetchTeacher()
+  console.log(teacher.value)
+})
 
 const currentComponent = computed(() => {
   const componentName = tabs.value[currentTab.value]
@@ -32,28 +51,28 @@ const currentComponent = computed(() => {
           <div class="bg-white py-9 px-10 rounded-md flex flex-col">
             <img class="rounded-md mb-6" src="@/assets/images/team-06.webp" width="300" alt="" />
             <div class="mb-4">
-              <h6 class="text-lg text-black font-bold">Mark Alen</h6>
+              <h6 class="text-lg text-black font-bold">{{ teacher.name }}</h6>
               <span class="text-[#8a8a8a]">Vice Chancellor</span>
             </div>
             <div>
               <ul class="flex items-center gap-2 mb-4">
                 <li class="px-[5px] text-[#0866FF]">
-                  <a href="#">
+                  <a :href="teacher.facebook" target="_blank">
                     <inline-svg class="w-4" src="svg/facebook-color.svg" />
                   </a>
                 </li>
                 <li class="px-[5px] text-[#1DA1F2]">
-                  <a href="#">
+                  <a :href="teacher.twitter" target="_blank">
                     <inline-svg class="w-7" src="svg/twitter-color.svg" />
                   </a>
                 </li>
                 <li class="px-[5px] text-[#168CC8]">
-                  <a href="#">
+                  <a :href="teacher.linkedin" target="_blank">
                     <inline-svg class="w-7" src="svg/linkedin-color.svg" />
                   </a>
                 </li>
                 <li class="px-[5px] text-[#0A66C2]">
-                  <a href="#">
+                  <a :href="teacher.telegram" target="_blank">
                     <inline-svg class="w-7" src="svg/telegram-color.svg" />
                   </a>
                 </li>

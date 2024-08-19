@@ -1,6 +1,15 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import AppPagination from '@/components/AppPagination.vue'
 import InlineSvg from '@/components/InlineSvg.vue'
+import { fetchData } from '@/composables/fetchData'
+
+const teachers = ref<any>([])
+
+onMounted(async () => {
+  teachers.value = await fetchData('users')
+  console.log(teachers.value, 'teachers')
+})
 </script>
 
 <template>
@@ -12,20 +21,27 @@ import InlineSvg from '@/components/InlineSvg.vue'
         <h2 class="mb-1 font-bold text-4xl">O‘qituvchilar ro‘yxati</h2>
       </div>
       <ul class="flex flex-wrap">
-        <li v-for="i in 7" :key="i" class="w-1/3 p-4">
+        <li v-for="teacher in teachers" :key="teacher.id" class="w-1/3 p-4">
           <div class="card-wrapper">
             <div class="card-inner">
               <div class="thumbnail-wrapper">
                 <div class="thumbnail">
                   <a href="#">
-                    <img class="rounded-[10px]" src="../assets/images/team-06.webp" alt="" />
+                    <img
+                      v-if="teacher.photoURL"
+                      class="rounded-[10px] w-full object-cover"
+                      :src="teacher.photoURL"
+                      alt=""
+                    />
+                    <img v-else class="rounded-[10px]" src="../assets/images/team-06.webp" alt="" />
                   </a>
                 </div>
                 <ul class="thumbnail-social flex gap-4">
                   <li class="flex items-center justify-center">
                     <a
                       class="flex border-2 text-white hover:bg-white hover:text-primary transition-all duration-300 w-full h-full p-3 rounded-full"
-                      href="#"
+                      :href="teacher.linkedin"
+                      target="_blank"
                     >
                       <inline-svg class="w-5 h-5" src="svg/linkedin.svg" />
                     </a>
@@ -33,7 +49,8 @@ import InlineSvg from '@/components/InlineSvg.vue'
                   <li class="flex items-center justify-center">
                     <a
                       class="flex border-2 text-white hover:bg-white hover:text-primary transition-all duration-300 w-full h-full p-3 rounded-full"
-                      href="#"
+                      :href="teacher.twitter"
+                      target="_blank"
                     >
                       <inline-svg class="w-5 h-5" src="svg/twitter.svg" />
                     </a>
@@ -41,7 +58,8 @@ import InlineSvg from '@/components/InlineSvg.vue'
                   <li class="flex items-center justify-center">
                     <a
                       class="flex border-2 text-white hover:bg-white hover:text-primary transition-all duration-300 w-full h-full p-3 rounded-full"
-                      href="#"
+                      :href="teacher.facebook"
+                      target="_blank"
                     >
                       <inline-svg class="w-5 h-5" src="svg/facebook.svg" />
                     </a>
@@ -50,7 +68,9 @@ import InlineSvg from '@/components/InlineSvg.vue'
               </div>
               <div class="content text-center mt-4">
                 <h5 class="title mb-1 font-semibold text-lg">
-                  <router-link to="/teacher_detail">Jane Seymour</router-link>
+                  <router-link :to="{ name: 'teacher', params: { id: teacher.id } }">{{
+                    teacher.name
+                  }}</router-link>
                 </h5>
                 <span class="designation mb-4 text-tg-gray">Teacher</span>
                 <p class="mb-4 text-tg-gray text-base">

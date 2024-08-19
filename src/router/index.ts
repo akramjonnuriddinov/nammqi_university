@@ -19,8 +19,8 @@ const router = createRouter({
       component: TeachersView
     },
     {
-      path: '/teacher_detail',
-      name: 'teacher_detail',
+      path: '/teacher/:id',
+      name: 'teacher',
       component: TeacherDetail
     },
     {

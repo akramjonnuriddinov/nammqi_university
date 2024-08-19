@@ -62,7 +62,8 @@ const defaultOptions = {
       [{ list: 'ordered' }, { list: 'bullet' }],
       [{ header: [1, 2, 3, false] }],
       [{ color: [] }, { background: [] }],
-      ['link', 'image', 'video']
+      ['link', 'image', 'video'],
+      [{ align: [] }]
     ]
   },
   placeholder: '',
