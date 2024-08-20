@@ -1,43 +1,48 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { useAuthStore } from '@/stores/auth'
+import { db } from '@/firebase'
 
-const books = ref([
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'John Doe',
-    coverImage:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-5Ei0F_j0MnzOfLg0x-GqTVcgss3x_yogXw&s',
-    description: 'This is a description of the first book.'
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'John Doe',
-    coverImage:
-      'https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1356&h=668&fit=crop',
-    description: 'This is a description of the second book.'
-  },
-  {
-    id: 1,
-    title: 'Book Title 1',
-    author: 'John Doe',
-    coverImage:
-      'https://elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-e1464023124869.jpeg',
-    description: 'This is a description of the first book.'
-  },
-  {
-    id: 2,
-    title: 'Book Title 2',
-    author: 'John Doe',
-    coverImage:
-      'https://img.etimg.com/thumb/width-420,height-315,imgsize-24942,resizemode-75,msid-98117504/top-trending-products/books/10-best-novels-for-beginners-to-read-this-year/best-novels-for-beginners.jpg',
-    description: 'This is a description of the second book.'
+// State to hold books
+const books = ref<any[]>([])
+
+// Get user info from authStore
+const authStore = useAuthStore()
+
+// Fetch books from Firestore
+const fetchBooks = async () => {
+  try {
+    // Reference to the books collection
+    const booksCollectionRef = collection(db, 'books')
+
+    // Query for books by the current user
+    const q = query(booksCollectionRef, where('userId', '==', authStore.user.id))
+    const querySnapshot = await getDocs(q)
+
+    // Map the results to an array of book objects
+    books.value = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+  } catch (error) {
+    console.error('Error fetching books: ', error)
   }
-])
+}
 
+// Call fetchBooks when the component is mounted
+onMounted(() => {
+  fetchBooks()
+})
+
+// Handle viewing book details
 const viewDetails = (book: any) => {
-  console.log('Viewing details for:', book.title)
+  if (book.fileUrl) {
+    // Open PDF in a new tab
+    window.open(book.fileUrl, '_blank')
+  } else {
+    console.error('No file URL found for this book')
+  }
 }
 </script>
 
@@ -46,7 +51,7 @@ const viewDetails = (book: any) => {
     <h2 class="text-xl font-bold text-center mb-8">Muallif Kitoblari</h2>
     <div class="books-grid">
       <div v-for="book in books" :key="book.id" class="book-card">
-        <img :src="book.coverImage" alt="Book Cover" class="book-cover" />
+        <img src="@/assets/images/signin-image.webp" alt="Book Cover" class="book-cover" />
         <div class="book-info">
           <h3 class="book-title">{{ book.title }}</h3>
           <p class="book-author">{{ book.author }}</p>

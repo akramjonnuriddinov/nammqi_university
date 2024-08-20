@@ -45,11 +45,11 @@ const currentComponent = computed(() => {
 <template>
   <main>
     <div class="hero"></div>
-    <div class="bg-[#edf0f2] pt-[70px] py-[120px]">
+    <div v-if="teacher" class="bg-[#edf0f2] pt-[70px] py-[120px]">
       <div class="container mx-auto w-full max-w-7xl px-5 flex">
         <div class="px-4 max-w-[33%] w-full">
           <div class="bg-white py-9 px-10 rounded-md flex flex-col">
-            <img class="rounded-md mb-6" src="@/assets/images/team-06.webp" width="300" alt="" />
+            <img class="rounded-md mb-6" :src="teacher.photoURL" width="300" alt="" />
             <div class="mb-4">
               <h6 class="text-lg text-black font-bold">{{ teacher.name }}</h6>
               <span class="text-[#8a8a8a]">Vice Chancellor</span>
@@ -78,10 +78,51 @@ const currentComponent = computed(() => {
                 </li>
               </ul>
             </div>
-            <p class="text-[#505050]">
+            <!-- <p class="text-[#505050]">
               Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat
               ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate..
-            </p>
+            </p> -->
+            <div class="max-w-lg mx-auto bg-white rounded-lg">
+              <div class="grid grid-cols-1 gap-6">
+                <div>
+                  <p class="font-bold text-blue-600">
+                    F.I.O.:
+                    <span class="font-normal text-gray-800"
+                      >Xudayqulov Rashidbek Mansurjonovich</span
+                    >
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    Darajasi: <span class="font-normal text-gray-800">Texnika fanlari nomzodi</span>
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    Telefon: <span class="font-normal text-gray-800">+998909590208</span>
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    ORCID: <span class="font-normal text-gray-800"></span>
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    Manzil:
+                    <span class="font-normal text-gray-800"
+                      >Toshkent shahar Mirobod tumani Temiryo'lchilar ko'chasi 1-uy</span
+                    >
+                  </p>
+                </div>
+                <div>
+                  <p class="font-bold text-blue-600">
+                    Tavallud kuni: <span class="font-normal text-gray-800"></span>
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    Tajriba: <span class="font-normal text-gray-800">Yil</span>
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    Email: <span class="font-normal text-gray-800">Rashidbek_19_87@mail.ru</span>
+                  </p>
+                  <p class="font-bold text-blue-600">
+                    Scopus ID: <span class="font-normal text-gray-800"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="px-4 w-full">
@@ -103,7 +144,7 @@ const currentComponent = computed(() => {
             </div>
             <!-- /BUTTONS -->
             <div class="p-10">
-              <component :is="currentComponent" />
+              <component :is="currentComponent" :teacher="teacher" />
             </div>
           </div>
         </div>

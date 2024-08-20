@@ -1,6 +1,13 @@
+<script setup lang="ts">
+defineProps({
+  teacher: Object
+})
+</script>
+
 <template>
-  <div class="container mx-auto bg-white py-5 px-4">
-    <div class="space-y-8">
+  <div v-if="teacher" class="container mx-auto bg-white py-5 px-4">
+    <div v-html="teacher.biography"></div>
+    <div v-if="false" class="space-y-8">
       <!-- Biography Title -->
       <div class="text-center">
         <h2 class="text-2xl font-bold pb-2 mb-4">Biografiya</h2>
@@ -143,7 +150,7 @@
       </div>
     </div>
   </div>
-  <div class="container mx-auto bg-white pt-5 pb-3 px-4">
+  <div v-if="false" class="container mx-auto bg-white pt-5 pb-3 px-4">
     <div class="space-y-4">
       <!-- Title and Placeholder Text -->
       <div class="text-center">
@@ -151,8 +158,6 @@
         <p class="text-center text-gray-600">Ma'lumotlar yo'q</p>
       </div>
 
-      <!-- Placeholder for additional content -->
-      <!-- Uncomment and adjust as needed -->
       <div class="space-y-4">
         <div class="py-1">
           <h5 class="font-bold text-primary inline">h-indeks:</h5>

@@ -87,7 +87,7 @@ const initialize = () => {
     quill.value.enable(!props.disabled)
 
     // Mark model as touched if editor lost focus
-    quill.value.on('selection-change', (range) => {
+    quill.value.on('selection-change', (range: any) => {
       if (!range) {
         emit('blur', quill.value)
       } else {

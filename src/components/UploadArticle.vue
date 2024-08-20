@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-6">
     <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-      <h2 class="text-2xl font-semibold text-center text-[#07294d] mb-6">Upload a Book</h2>
+      <h2 class="text-2xl font-semibold text-center text-[#07294d] mb-6">Upload a Article</h2>
 
       <!-- File Input -->
       <div class="mb-4">
@@ -51,7 +51,7 @@
       >
         <!-- Display progress percentage in button -->
         <span v-if="isLoading">Uploading...</span>
-        <span v-else>Upload Book</span>
+        <span v-else>Upload Article</span>
       </button>
 
       <!-- Progress Debugging -->
@@ -78,7 +78,7 @@ const bookTitle = ref('')
 const author = ref('')
 const uploadProgress = ref(0)
 
-const collectionRef = collection(db, 'books')
+const collectionRef = collection(db, 'articles')
 
 const authStore = useAuthStore()
 
@@ -99,7 +99,7 @@ const uploadBook = async () => {
     uploadProgress.value = 0 // Reset progress
 
     const storage = getStorage()
-    const storageRefPath = storageRef(storage, `books/${authStore.user.id}/${file.value.name}`)
+    const storageRefPath = storageRef(storage, `articles/${authStore.user.id}/${file.value.name}`)
 
     const uploadTask = uploadBytesResumable(storageRefPath, file.value)
 

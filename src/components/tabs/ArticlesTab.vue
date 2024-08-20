@@ -1,39 +1,48 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { useAuthStore } from '@/stores/auth'
+import { db } from '@/firebase'
 
-const articles = ref([
-  {
-    id: 1,
-    title: 'Understanding Quantum Physics',
-    summary: 'A comprehensive guide to the principles of quantum physics.',
-    thumbnail:
-      'https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1356&h=668&fit=crop'
-  },
-  {
-    id: 2,
-    title: 'Advanced Calculus Techniques',
-    summary: 'Exploring advanced techniques and applications of calculus.',
-    thumbnail:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-5Ei0F_j0MnzOfLg0x-GqTVcgss3x_yogXw&s'
-  },
-  {
-    id: 2,
-    title: 'Advanced Calculus Techniques',
-    summary: 'Exploring advanced techniques and applications of calculus.',
-    thumbnail:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-5Ei0F_j0MnzOfLg0x-GqTVcgss3x_yogXw&s'
-  },
-  {
-    id: 2,
-    title: 'Advanced Calculus Techniques',
-    summary: 'Exploring advanced techniques and applications of calculus.',
-    thumbnail:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-5Ei0F_j0MnzOfLg0x-GqTVcgss3x_yogXw&s'
+// State to hold books
+const books = ref<any[]>([])
+
+// Get user info from authStore
+const authStore = useAuthStore()
+
+// Fetch books from Firestore
+const fetchBooks = async () => {
+  try {
+    // Reference to the books collection
+    const booksCollectionRef = collection(db, 'articles')
+
+    // Query for books by the current user
+    const q = query(booksCollectionRef, where('userId', '==', authStore.user.id))
+    const querySnapshot = await getDocs(q)
+
+    // Map the results to an array of book objects
+    books.value = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+  } catch (error) {
+    console.error('Error fetching books: ', error)
   }
-])
+}
 
-const viewArticle = (article: any) => {
-  console.log('Viewing article:', article.title)
+// Call fetchBooks when the component is mounted
+onMounted(() => {
+  fetchBooks()
+})
+
+// Handle viewing book details
+const viewDetails = (book: any) => {
+  if (book.fileUrl) {
+    // Open PDF in a new tab
+    window.open(book.fileUrl, '_blank')
+  } else {
+    console.error('No file URL found for this book')
+  }
 }
 </script>
 
@@ -41,12 +50,16 @@ const viewArticle = (article: any) => {
   <div>
     <h2 class="text-xl font-bold text-center mb-8">Muallif Maqolalari</h2>
     <div class="articles-grid">
-      <div v-for="article in articles" :key="article.id" class="article-card">
-        <img :src="article.thumbnail" alt="Article Thumbnail" class="article-thumbnail" />
+      <div v-for="article in books" :key="article.id" class="article-card">
+        <img
+          src="@/assets/images/signin-image.webp"
+          alt="Article Thumbnail"
+          class="article-thumbnail"
+        />
         <div class="article-content">
           <h3 class="article-title">{{ article.title }}</h3>
           <p class="article-summary">{{ article.summary }}</p>
-          <button class="article-button" @click="viewArticle(article)">Read More</button>
+          <button class="article-button" @click="viewDetails(article)">Read More</button>
         </div>
       </div>
     </div>

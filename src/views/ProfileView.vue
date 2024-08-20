@@ -4,6 +4,7 @@ import ProfileSidebar from '@/components/ProfileSidebar.vue'
 import ProfileDetail from '@/components/ProfileDetail.vue'
 import UploadVideo from '@/components/UploadVideo.vue'
 import UploadBook from '@/components/UploadBook.vue'
+import UploadArticle from '@/components/UploadArticle.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const authStore = useAuthStore()
@@ -23,6 +24,8 @@ const updateSelectedComponent = (component: any) => {
     case 'UploadBook':
       selectedComponent.value = UploadBook
       break
+    case 'UploadArticle':
+      selectedComponent.value = UploadArticle
   }
 }
 </script>

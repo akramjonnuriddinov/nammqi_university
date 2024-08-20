@@ -21,6 +21,7 @@ const navigations = ref([
   },
   {
     name: 'Maqola yuklash',
+    component: 'UploadArticle',
     disabled: false
   },
   {
