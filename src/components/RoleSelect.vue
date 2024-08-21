@@ -6,6 +6,7 @@
       @change="emitRole"
       class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
     >
+      <option disabled value="">Select teacher role</option>
       <option v-for="role in roles" :key="role" :value="role">
         {{ role }}
       </option>

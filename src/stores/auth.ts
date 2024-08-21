@@ -45,12 +45,6 @@ export const useAuthStore = defineStore('auth', {
           ...userInfo,
           photoURL: user.photoURL
         }
-        try {
-          const userRef = ref(storage, `users/${user.uid}`)
-          this.resume = await getDownloadURL(userRef)
-        } catch (error) {
-          console.error('Error:', error)
-        }
       }
     },
     removeResume() {
@@ -64,15 +58,6 @@ export const useAuthStore = defineStore('auth', {
         localStorage.removeItem('token')
         this.token = ''
         this.user = null
-        this.resume = ''
-        return await new Promise<void>((resolve) => {
-          const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (!user) {
-              unsubscribe()
-              resolve()
-            }
-          })
-        })
       } catch (error) {
         console.error('Error during logout:', error)
       }

@@ -8,12 +8,15 @@
       ></div>
     </div>
     <!-- Preview Button -->
-    <button @click="openPreview" class="mt-4 p-2 bg-blue-500 text-white rounded">Preview</button>
+    <button @click="openPreview" class="mt-4 p-2">Preview</button> |
+    <button @click="closePreview" class="mt-4 p-2 text-red-500">Close</button>
 
     <!-- Preview Modal -->
     <div v-if="showPreview" @click="closePreview" class="modal">
       <div class="modal-content" @click.stop>
-        <button @click="closePreview" class="mt-4 p-2 bg-red-500 text-white rounded">Close</button>
+        <button v-if="false" @click="closePreview" class="mt-4 p-2 bg-red-500 text-white rounded">
+          Close
+        </button>
         <div v-html="previewContent" class="preview-content"></div>
       </div>
     </div>
