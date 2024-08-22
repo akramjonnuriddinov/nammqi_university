@@ -5,7 +5,7 @@ export default defineComponent({
   name: 'RoleSelect',
   props: {
     roles: {
-      type: Array as () => string[],
+      type: Array as () => any,
       required: true
     },
     modelValue: {
@@ -45,7 +45,7 @@ export default defineComponent({
     >
       <option disabled value="">Select teacher role</option>
       <option v-for="role in roles" :key="role" :value="role">
-        {{ role }}
+        {{ role.name }}
       </option>
     </select>
   </div>
