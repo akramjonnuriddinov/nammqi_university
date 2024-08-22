@@ -37,7 +37,7 @@ export default defineComponent({
 
 <template>
   <div class="flex w-[400px] flex-col max-xl:w-full">
-    <label for="role" class="mb-2 block font-medium">Select Role</label>
+    <label for="role" class="mb-2 block font-medium">Fakultet nomi</label>
     <select
       v-model="selectedRole"
       @change="emitRole"

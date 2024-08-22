@@ -28,7 +28,7 @@ onMounted(async () => {
 })
 
 const filteredTeachers = computed(() => {
-  if (!selectedRole.value || selectedRole.value == 'ALL') {
+  if (!selectedRole.value || selectedRole.value == 'Hammasi') {
     return teachers.value
   }
   return teachers.value.filter((teacher: any) => teacher.role == selectedRole.value)

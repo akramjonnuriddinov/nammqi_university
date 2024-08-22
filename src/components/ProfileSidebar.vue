@@ -43,7 +43,7 @@ const selectNavItem = (nav: any) => {
     class="relative left-0 z-10 w-64 pt-10 max-[990px]:mt-[50px] max-[990px]:flex max-[990px]:w-full max-[990px]:justify-center max-[990px]:pt-0 sm:translate-x-0"
   >
     <div class="h-full px-3 max-[990px]:w-full max-[990px]:p-0 max-[990px]:pb-0">
-      <h1 class="text-2xl font-medium max-[990px]:mb-4">Your Profile</h1>
+      <h1 class="text-2xl font-medium max-[990px]:mb-4">Sizning Profilingiz</h1>
       <ul
         class="mt-[57px] flex flex-col overflow-y-auto max-[990px]:mt-0 max-[990px]:flex-row max-[990px]:justify-start max-[990px]:gap-2"
       >

@@ -155,8 +155,8 @@ const closePreview = () => {
       ></div>
     </div>
     <!-- Preview Button -->
-    <button @click="openPreview" class="mt-4 p-2">Preview</button> |
-    <button @click="closePreview" class="mt-4 p-2 text-red-500">Close</button>
+    <button @click="openPreview" class="mt-4 p-2">Ko'rish</button> |
+    <button @click="closePreview" class="mt-4 p-2 text-red-500">Yopish</button>
 
     <!-- Preview Modal -->
     <div v-if="showPreview" @click="closePreview" class="modal">

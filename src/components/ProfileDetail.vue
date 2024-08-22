@@ -123,10 +123,10 @@ const updateProfileInformation = async () => {
 </script>
 
 <template>
-  <div class="relative border-b border-gray-300">
+  <div class="relative">
     <div class="mb-7">
-      <h1 class="text-[20px] font-medium">Personal information</h1>
-      <span class="text-gray-400">Your main profile information</span>
+      <h1 class="text-[20px] font-medium">Shaxsiy ma'lumot</h1>
+      <span class="text-gray-400">Sizning asosiy profilingiz ma'lumotlari</span>
     </div>
     <role-select class="mb-5" :roles="teacherRoles" v-model="selectedRole" />
     <div class="flex flex-col gap-5 pb-10">
@@ -234,7 +234,7 @@ const updateProfileInformation = async () => {
       </div>
     </div>
   </div>
-  <button @click="useTemplate">use template</button>
+  <button @click="useTemplate">Shablondan foydalanish</button>
   <the-editor @input="handleShortDescriptionFromChild" :content="content" :edit-editor="content" />
   <button
     @click="sendQuil"

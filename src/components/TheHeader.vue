@@ -90,7 +90,7 @@ onMounted(async () => {
             </li>
           </ul>
           <div v-if="authStore.user" class="flex gap-2 text-[#ffc600]">
-            <router-link to="/profile">Profile</router-link>
+            <router-link to="/profile">Profil</router-link>
           </div>
           <div v-else class="flex gap-2 text-[#ffc600]">
             <a @click="$emit('open-login')" href="#">Login</a>
