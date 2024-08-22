@@ -1,19 +1,3 @@
-<template>
-  <div class="flex w-[400px] flex-col max-xl:w-full">
-    <label for="role" class="mb-2 block font-medium">Select Role</label>
-    <select
-      v-model="selectedRole"
-      @change="emitRole"
-      class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
-    >
-      <option disabled value="">Select teacher role</option>
-      <option v-for="role in roles" :key="role" :value="role">
-        {{ role }}
-      </option>
-    </select>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
 
@@ -50,3 +34,19 @@ export default defineComponent({
   }
 })
 </script>
+
+<template>
+  <div class="flex w-[400px] flex-col max-xl:w-full">
+    <label for="role" class="mb-2 block font-medium">Select Role</label>
+    <select
+      v-model="selectedRole"
+      @change="emitRole"
+      class="w-full rounded-md border border-[#e0e0e0] bg-transparent px-4 py-3 text-base outline-none focus:border-primary focus:shadow-md"
+    >
+      <option disabled value="">Select teacher role</option>
+      <option v-for="role in roles" :key="role" :value="role">
+        {{ role }}
+      </option>
+    </select>
+  </div>
+</template>

@@ -1,28 +1,3 @@
-<template>
-  <div>
-    <div class="quill-editor relative rounded-md">
-      <slot class="rounded-md" name="toolbar"></slot>
-      <div
-        class="absolute h-full max-h-[400px] min-h-[400px] w-full overflow-y-auto border"
-        ref="editor"
-      ></div>
-    </div>
-    <!-- Preview Button -->
-    <button @click="openPreview" class="mt-4 p-2">Preview</button> |
-    <button @click="closePreview" class="mt-4 p-2 text-red-500">Close</button>
-
-    <!-- Preview Modal -->
-    <div v-if="showPreview" @click="closePreview" class="modal">
-      <div class="modal-content" @click.stop>
-        <button v-if="false" @click="closePreview" class="mt-4 p-2 bg-red-500 text-white rounded">
-          Close
-        </button>
-        <div v-html="previewContent" class="preview-content"></div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, watch, defineProps, defineEmits } from 'vue'
 import Quill from 'quill'
@@ -169,6 +144,31 @@ const closePreview = () => {
   previewContent.value = ''
 }
 </script>
+
+<template>
+  <div>
+    <div class="quill-editor relative rounded-md">
+      <slot class="rounded-md" name="toolbar"></slot>
+      <div
+        class="absolute h-full max-h-[400px] min-h-[400px] w-full overflow-y-auto border"
+        ref="editor"
+      ></div>
+    </div>
+    <!-- Preview Button -->
+    <button @click="openPreview" class="mt-4 p-2">Preview</button> |
+    <button @click="closePreview" class="mt-4 p-2 text-red-500">Close</button>
+
+    <!-- Preview Modal -->
+    <div v-if="showPreview" @click="closePreview" class="modal">
+      <div class="modal-content" @click.stop>
+        <button v-if="false" @click="closePreview" class="mt-4 p-2 bg-red-500 text-white rounded">
+          Close
+        </button>
+        <div v-html="previewContent" class="preview-content"></div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style>
 .ql-editor {

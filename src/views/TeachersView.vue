@@ -1,14 +1,37 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import AppPagination from '@/components/AppPagination.vue'
 import InlineSvg from '@/components/InlineSvg.vue'
 import { fetchData } from '@/composables/fetchData'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/firebase'
+import RoleSelect from '@/components/RoleSelect.vue'
 
+const teacherRoles = ref<string[]>([])
 const teachers = ref<any>([])
+const selectedRole = ref('')
+
+const fetchTeacherRoles = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'faculties'))
+    querySnapshot.forEach((doc) => {
+      teacherRoles.value.push(doc.data().name)
+    })
+  } catch (error) {
+    console.error('Error fetching teacher roles: ', error)
+  }
+}
 
 onMounted(async () => {
   teachers.value = await fetchData('users')
-  console.log(teachers.value, 'teachers')
+  await fetchTeacherRoles()
+})
+
+const filteredTeachers = computed(() => {
+  if (!selectedRole.value || selectedRole.value == 'ALL') {
+    return teachers.value
+  }
+  return teachers.value.filter((teacher: any) => teacher.role == selectedRole.value)
 })
 </script>
 
@@ -20,8 +43,11 @@ onMounted(async () => {
         <span class="font-semibold uppercase mb-4 text-base text-tg-gray">Ustozlar</span>
         <h2 class="mb-1 font-bold text-4xl">O‘qituvchilar ro‘yxati</h2>
       </div>
+      <div class="p-[36px]">
+        <role-select :roles="teacherRoles" v-model="selectedRole" />
+      </div>
       <ul class="flex flex-wrap">
-        <li v-for="teacher in teachers" :key="teacher.id" class="w-1/3 p-4">
+        <li v-for="teacher in filteredTeachers" :key="teacher.id" class="w-1/3 p-4">
           <div class="card-wrapper">
             <div class="card-inner">
               <div class="thumbnail-wrapper">

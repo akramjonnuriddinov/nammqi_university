@@ -35,10 +35,8 @@ onMounted(() => {
   fetchBooks()
 })
 
-// Handle viewing book details
 const viewDetails = (book: any) => {
   if (book.fileUrl) {
-    // Open PDF in a new tab
     window.open(book.fileUrl, '_blank')
   } else {
     console.error('No file URL found for this book')
