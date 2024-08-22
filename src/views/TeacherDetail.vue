@@ -83,7 +83,8 @@ const currentComponent = computed(() => {
               ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate..
             </p> -->
             <div class="max-w-lg mx-auto bg-white rounded-lg">
-              <div class="grid grid-cols-1 gap-6">
+              <div v-html="teacher.shortBiography"></div>
+              <div v-if="false" class="grid grid-cols-1 gap-6">
                 <div>
                   <p class="font-bold text-blue-600">
                     F.I.O.:

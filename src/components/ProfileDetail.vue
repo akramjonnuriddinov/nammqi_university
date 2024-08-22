@@ -21,6 +21,7 @@ const selectedFile = ref<any>(null)
 const isLoadingResume = ref(false)
 const isLoading = ref(false)
 const content = ref('')
+const shortContent = ref('')
 const template = `<p></p><h1 class="ql-align-center"><strong style="background-color: rgb(255, 255, 255); color: rgb(20, 20, 20);">Biografiya</strong></h1><p><br></p><p class="ql-align-center"><strong style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">Ta’lim darajasi</strong></p><ol><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2005-2009 –Toshkent avtomobil-yo’llar instituti (bakalavriatura)</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2009-2011 – Toshkent avtomobil-yo’llar instituti (magistratura)</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2013-2016 – Toshkent avtomobil’ - yo’llar instituti avtomobil’ yo’llari va aerodromlarni loyihalash kafedrasi katta ilmiy xodim - izlanuvchisi</span></li></ol><p class="ql-align-center"><strong style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">Mukofotlar</strong></p><ol><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2015 - "Eng faol transport xodimi" nominatsiyasida "Yilning eng faol yosh mutaxassisi" tanlovida "Vatanim rivojiga qo'shgan hissam" tanlovida qatnashgani uchun faxriy diplom va sertifikat bilan taqdirlandi.</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2020 -&nbsp;"BOBEK" Milliy harakati "loyihasida qatnashgani uchun" Eng yaxshi yosh olim -2020 "medali va diplom bilan taqdirlandi.&nbsp;&nbsp;</span></li></ol><p class="ql-align-center"><strong style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">Kasbiy faoliyat bosqichlari</strong></p><ol><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2011-2013 - Toshkent avtomobil’ - yo’llar instituti avtomobil’ yo’llari va aerodromlar kafedrasi assistenti</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2016-2017 - Toshkent avtomobil’ yo’llarini loyihalash, qurish va ekspluatatsiyasi instituti avtomobil’ yo’llari va aerodromlarni loyihalash kafedrasi assistenti</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2017-2018 - Toshkent avtomobil’ yo’llarini loyihalash, qurish va ekapluatatsiyasi instituti avtomobil’ yo’llarini qidiruv va loyihalash&nbsp;kafedrasi assistenti</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2018-2020 - Toshkent avtomobil’ yo’llarini loyihalash, qurish va ekapluatatsiyasi instituti avtomobil’ yo’llarini qidiruv va loyihalash&nbsp;kafedrasi mudiri</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2020 – h. v.- Toshkent davlat transport universiteti avtomobil yo’llarni qidiruv va loyihalash kafedrasi mudiri, Professor, Texnika fanlari nomzodi.</span></li></ol><p class="ql-align-center"><strong style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">Kasbiy yutuqlar va ijodiy loyihalar</strong></p><ol><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2014-2017 - "Innovatsion g'oyalar" respublika tanlovi g'olibi</span></li></ol><p class="ql-align-center"><strong style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">Malaka oshirish</strong></p><ol><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2012 - Toshkent axborot texnologiyalari universiteti «Axborot texnologiyalari» (O’zbekiston, Toshkent)</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2013&nbsp;- Nizomiy nomidagi TDPI huzuridagi PKQT va ularning malakasini oshirish tarmoq markazi PEDAGOGIKA (Kasbiy ta’lim), (O’zbekiston, Toshkent)</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2018 - “Oliy ta’lim muassasalari boshqaruv kadrlari zaxirasini shakllantirish” bo’yicha O’zbekiston Respublikasi Oliy va o’rta maxsus ta’lim vazirligi kurslari (O’zbekiston, Toshkent)</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2019 - “КРЕДО-ДИАЛОГ” kompaniyasi mutaxassislari ishtirokida AvaYTHAda malaka oshirish kurslari (Rossiya, Moskva);</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2019 - BMTU qoshidagi KMOvaQT tarmoqlararo institutida malaka oshirish va kadrlarni qayta tayyorlash kurslari (Belorussiya, Minsk)</span></li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">2019 - “КРЕДО-ДИАЛОГ” kompaniyasida “Transport komminikatsiyalarini loyihalanshni zamonaviy avtomatlashgan texnologiyalari” mavzusida kurs (Belorussiya, Minsk)</span></li></ol><p><br></p><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">F.I.O.:</span></h5><p><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">&nbsp;Xudayqulov Rashidbek Mansurjonovich</span></p><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Tavallud kuni:</span></h5><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Darajasi:</span></h5><p><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">&nbsp;Texnika fanlari nomzodi</span></p><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Tajriba:</span></h5><p><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">&nbsp;Yil</span></p><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Telefon:</span></h5><p><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">&nbsp;+998909590208</span></p><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Email:</span></h5><p><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">&nbsp;Rashidbek_19_87@mail.ru</span></p><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">ORCID:</span></h5><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Scopus ID:</span></h5><h5><span style="background-color: rgb(255, 255, 255); color: rgb(0, 79, 236);">Manzil:</span></h5><p><span style="color: rgb(100, 100, 100); background-color: rgb(255, 255, 255);">&nbsp;Toshkent shahar Mirobod tumani Temiryo‘lchilar ko‘chasi 1-uy</span></p><p><br></p><p> </p><p> content.value</p> content.value`
 const teacherRoles = ref<string[]>([])
 const selectedRole = ref('')
@@ -54,6 +55,28 @@ const sendQuil = async () => {
       await setDoc(colRef, {
         ...updatedUser.value,
         biography: content.value
+      })
+
+      await updateProfile(currentUser, { displayName: updatedUser.value.name })
+
+      store.fetchProfile()
+    } catch (error) {
+      console.error('Error updating profile:', error)
+    } finally {
+      isLoading.value = false
+    }
+  }
+}
+const sendQuil2 = async () => {
+  if (currentUser !== null) {
+    try {
+      isLoading.value = true
+
+      const colRef = doc(db, 'users', updatedUser.value.id)
+
+      await setDoc(colRef, {
+        ...updatedUser.value,
+        shortBiography: content.value
       })
 
       await updateProfile(currentUser, { displayName: updatedUser.value.name })
@@ -281,6 +304,20 @@ const updateProfileInformation = async () => {
       </div>
     </div>
   </div>
+
+  <!-- SHORT BIO -->
+  <the-editor
+    @input="handleShortDescriptionFromChild"
+    :content="shortContent"
+    :edit-editor="shortContent"
+    class="mt-10"
+  />
+  <button
+    @click="sendQuil2"
+    class="w-[180px] update-btn bg-primary flex justify-center items-center h-16 gap-2"
+  >
+    Send Info
+  </button>
 </template>
 
 <style scoped>
@@ -288,7 +325,7 @@ const updateProfileInformation = async () => {
   border: 0px;
   color: #fff;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 13px;
   border-radius: 6px;
 }
